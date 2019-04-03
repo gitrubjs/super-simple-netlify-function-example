@@ -37,7 +37,7 @@ class SimpleReactFileUpload extends React.Component {
     return (
       <form onSubmit={this.onFormSubmit}>
         <h1>File Upload</h1>
-        <input type="file" onChange={this.onChange} />
+        <input type="file" onChange={this.onChange} name="csv"/>
         <button type="submit">Upload</button>
       </form>
    )
