@@ -1,28 +1,9 @@
-import React from 'react'
+import React,{useCallback} from 'react'
 import axios, { post } from 'axios';
+import {useDropzone} from 'react-dropzone'
 
-class SimpleReactFileUpload extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state ={
-      file:null
-    }
-    this.onFormSubmit = this.onFormSubmit.bind(this)
-    this.onChange = this.onChange.bind(this)
-    this.fileUpload = this.fileUpload.bind(this)
-  }
-  onFormSubmit(e){
-    e.preventDefault() // Stop form submit
-    this.fileUpload(this.state.file).then((response)=>{
-      console.log(response.data);
-    })
-  }
-  onChange(e) {
-    this.setState({file:e.target.files[0]})
-  }
-  fileUpload(file){
-    const url = 'https://quirky-colden-e45f91.netlify.com/.netlify/functions/upload';
+function fileUpload(file){
+    const url = 'http://example.com/file-upload';
     const formData = new FormData();
     formData.append('file',file)
     const config = {
@@ -33,17 +14,26 @@ class SimpleReactFileUpload extends React.Component {
     return  post(url, formData,config)
   }
 
-  render() {
-    return (
-      <form onSubmit={this.onFormSubmit}>
-        <h1>File Upload</h1>
-        <input type="file" onChange={this.onChange} name="csv"/>
-        <button type="submit">Upload</button>
-      </form>
-   )
-  }
+function MyDropzone() {
+  const onDrop = useCallback(acceptedFiles => {
+    Promise.all(acceptedFiles.map(fileUpload)).then(resp => {
+        console.log(resp);
+    })
+  }, [])
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+ 
+  return (
+    <div {...getRootProps()}>
+      <input {...getInputProps()} />
+      {
+        isDragActive ?
+          <p>Drop the files here ...</p> :
+          <p>Drag 'n' drop some files here, or click to select files</p>
+      }
+    </div>
+  )
 }
 
 
 
-export default SimpleReactFileUpload
+export default MyDropzone

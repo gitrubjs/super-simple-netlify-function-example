@@ -8,6 +8,7 @@
     "netlify-lambda": "^1.4.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-dropzone": "^10.1.0",
     "react-scripts": "^2.1.8",
     "rimraf": "^2.6.3",
     "serverless-http": "^1.9.1"
