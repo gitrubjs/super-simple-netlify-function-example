@@ -7,6 +7,9 @@ const uploader = express.Router();
 
 uploader
 .route('/')
+.get((req,res) => {
+    res.json({ok:true});
+})
 .post((req,res) => {
   res.json({file:req.files})
 })
