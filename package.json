@@ -4,6 +4,10 @@
     "express": "^4.16.4",
     "express-fileupload": "^1.1.4",
     "netlify-lambda": "^1.4.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "^2.1.8",
+    "rimraf": "^2.6.3",
     "serverless-http": "^1.9.1"
   },
   "name": "super-simple-netlify-function-example",
@@ -12,7 +16,14 @@
   "repository": "git@github.com:gitrubjs/super-simple-netlify-function-example.git",
   "author": "Shubham Tiwari <websbiz0000@gmail.com>",
   "license": "MIT",
-  "scripts":{
-    "build":"netlify-lambda build src/functions"
-  }
+  "scripts": {
+    "build": "react-scripts build && netlify-lambda build src/functions",
+    "dev": "react-scripts start"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

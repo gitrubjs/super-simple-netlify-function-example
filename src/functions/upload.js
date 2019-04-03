@@ -5,7 +5,9 @@ const app = express();
 
 const uploader = express.Router();
 
-uploader.route('/').get((req,res) => {
+uploader
+.route('/')
+.get((req,res) => {
   res.json({ok:true});
 })
 
