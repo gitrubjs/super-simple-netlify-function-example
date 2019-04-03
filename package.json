@@ -3,6 +3,16 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-fileupload": "^1.1.4",
+    "netlify-lambda": "^1.4.3",
     "serverless-http": "^1.9.1"
+  },
+  "name": "super-simple-netlify-function-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:gitrubjs/super-simple-netlify-function-example.git",
+  "author": "Shubham Tiwari <websbiz0000@gmail.com>",
+  "license": "MIT",
+  "scripts":{
+    "build":"netlify-lambda build src/functions"
   }
 }
