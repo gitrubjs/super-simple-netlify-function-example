@@ -3,7 +3,7 @@ import axios, { post } from 'axios';
 import {useDropzone} from 'react-dropzone'
 
 function fileUpload(file){
-    const url = 'http://example.com/file-upload';
+    const url = 'https://quirky-colden-e45f91.netlify.com/.netlify/functions/upload';
     const formData = new FormData();
     formData.append('file',file)
     const config = {
